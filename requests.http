@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:5000/api
+
+### Health Check
+GET {{baseUrl}}/health
+
+###
+
+### Register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Captain",
+  "email": "captain@example.com",
+  "password": "123456"
+}
+
+###
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "captain@example.com",
+  "password": "123456"
+}
+
+###
+
+### Profile
+GET {{baseUrl}}/auth/profile
+Authorization: Bearer YOUR_JWT_TOKEN

@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "AI System Architecture Generator Backend",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "jwt",
+    "architecture-generator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^2.11.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "docx": "^9.7.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.4",
+    "morgan": "^1.11.0",
+    "pdfkit": "^0.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

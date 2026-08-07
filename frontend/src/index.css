@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #F1F5F9;
+  --bg-subtle: #E2E8F0;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border-color: #E2E8F0;
+  --border-hover: #CBD5E1;
+  --accent-primary: #4F46E5;
+  --accent-blue: #2563EB;
+  --accent-violet: #7C3AED;
+  --accent-cyan: #0891B2;
+  --accent-green: #059669;
+  --accent-orange: #EA580C;
+  --accent-rose: #E11D48;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+/* 1. COLORFUL THEME (DISTINCT VIBRANT NEUTRAL TINT) */
+[data-theme="colorful"] {
+  --bg-main: #F1F5F9;
+  --bg-subtle: #E2E8F0;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --border-color: #CBD5E1;
+  --border-hover: #94A3B8;
+  --accent-primary: #4F46E5;
+  --accent-blue: #2563EB;
+  --accent-violet: #7C3AED;
+  --accent-cyan: #0891B2;
+  --accent-green: #059669;
+  --accent-orange: #EA580C;
+  --accent-rose: #E11D48;
+}
+
+/* 2. LIGHT THEME (CONSERVATIVE PURE WHITE/NEUTRAL) */
+[data-theme="light"] {
+  --bg-main: #FFFFFF;
+  --bg-subtle: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border-color: #E2E8F0;
+  --border-hover: #CBD5E1;
+  --accent-primary: #2563EB;
+  --accent-blue: #2563EB;
+  --accent-violet: #6D28D9;
+  --accent-cyan: #0284C7;
+  --accent-green: #16A34A;
+  --accent-orange: #D97706;
+  --accent-rose: #DC2626;
+}
+
+/* 3. DARK THEME (SLATE DARK - NOT PURE BLACK) */
+[data-theme="dark"] {
+  --bg-main: #0F172A;
+  --bg-subtle: #1E293B;
+  --bg-surface: #1E293B;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --border-color: #334155;
+  --border-hover: #475569;
+  --accent-primary: #6366F1;
+  --accent-blue: #3B82F6;
+  --accent-violet: #8B5CF6;
+  --accent-cyan: #06B6D4;
+  --accent-green: #10B981;
+  --accent-orange: #F97316;
+  --accent-rose: #F43F5E;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+  }
+  [data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+}
+
+/* Distinct Ambient Radial Gradient Background for Colorful Theme */
+[data-theme="colorful"] body {
+  background-image: 
+    radial-gradient(circle at 85% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(8, 145, 178, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
+}
