@@ -14,7 +14,7 @@ export const register = async (req, res, next) => {
     if (!errors.isEmpty()) {
       return res.status(STATUS_CODES.BAD_REQUEST).json({
         success: false,
-        message: "Validation failed",
+        message: errors.array()[0]?.msg || "Validation failed",
         errors: errors.array(),
       });
     }
@@ -42,7 +42,7 @@ export const login = async (req, res, next) => {
     if (!errors.isEmpty()) {
       return res.status(STATUS_CODES.BAD_REQUEST).json({
         success: false,
-        message: "Validation failed",
+        message: errors.array()[0]?.msg || "Validation failed",
         errors: errors.array(),
       });
     }
@@ -60,15 +60,8 @@ export const login = async (req, res, next) => {
       },
     });
   } catch (error) {
-    console.error("REGISTER ERROR:");
-    console.error(error);
-
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-      errors: [],
-  });
-}
+    next(error);
+  }
 };
 
 export const profile = async (req, res) => {

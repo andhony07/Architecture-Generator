@@ -28,10 +28,7 @@ export const generateProject = async (req, res, next) => {
     });
   } catch (error) {
     console.error("Generate Project Controller Error:", error);
-    res.status(500).json({
-      success: false,
-      message: error.message || "Unable to generate architecture. Please try again.",
-    });
+    next(error);
   }
 };
 

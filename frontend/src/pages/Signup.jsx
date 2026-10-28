@@ -46,11 +46,10 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       const errMsg =
-        error.response?.data?.message ||
         (error.response?.data?.errors && error.response.data.errors[0]?.msg) ||
+        error.response?.data?.message ||
         "Registration failed. Please try again.";
       setServerError(errMsg);
-      toast.error(errMsg);
     }
   };
 

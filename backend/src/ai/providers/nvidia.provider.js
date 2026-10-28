@@ -6,7 +6,7 @@ export const generateWithNvidia = async (prompt) => {
 
   const isOpenRouter = apiKey.startsWith("sk-or-");
   const defaultModel = isOpenRouter
-    ? "nvidia/nemotron-3-nano-30b-a3b:free"
+    ? "nvidia/nemotron-3-nano-30b-a3b"
     : "nvidia/nemotron-4-340b-instruct";
 
   const modelName = process.env.NVIDIA_MODEL || defaultModel;

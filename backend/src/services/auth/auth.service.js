@@ -1,16 +1,20 @@
 import jwt from "jsonwebtoken";
 import User from "../../models/User.js";
+import STATUS_CODES from "../../constants/http/statusCodes.js";
 
 export const registerUser = async ({ name, email, password }) => {
-  const existingUser = await User.findOne({ email });
+  const normalizedEmail = email ? email.toLowerCase().trim() : email;
+  const existingUser = await User.findOne({ email: normalizedEmail });
 
   if (existingUser) {
-    throw new Error("Email already exists");
+    const error = new Error("Email already exists");
+    error.statusCode = STATUS_CODES.CONFLICT;
+    throw error;
   }
 
   const user = await User.create({
-    name,
-    email,
+    name: name?.trim(),
+    email: normalizedEmail,
     password,
   });
 
@@ -18,16 +22,21 @@ export const registerUser = async ({ name, email, password }) => {
 };
 
 export const loginUser = async ({ email, password }) => {
-  const user = await User.findOne({ email });
+  const normalizedEmail = email ? email.toLowerCase().trim() : email;
+  const user = await User.findOne({ email: normalizedEmail });
 
   if (!user) {
-    throw new Error("Invalid email or password");
+    const error = new Error("Invalid email or password");
+    error.statusCode = STATUS_CODES.UNAUTHORIZED;
+    throw error;
   }
 
   const isMatch = await user.comparePassword(password);
 
   if (!isMatch) {
-    throw new Error("Invalid email or password");
+    const error = new Error("Invalid email or password");
+    error.statusCode = STATUS_CODES.UNAUTHORIZED;
+    throw error;
   }
 
   const token = jwt.sign(

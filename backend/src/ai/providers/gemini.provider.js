@@ -6,7 +6,7 @@ export const generateWithGemini = async (prompt) => {
     throw new Error("GEMINI_API_KEY is not configured in backend environment.");
   }
 
-  const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const modelName = process.env.GEMINI_MODEL || "gemini-3.8-flash";
   const ai = new GoogleGenAI({ apiKey });
 
   console.log(`[AI] Primary provider active: Gemini (${modelName})`);
@@ -17,7 +17,7 @@ export const generateWithGemini = async (prompt) => {
       contents: prompt,
     });
 
-    if (response && response.text) {
+    if (response && response.candidates && response.candidates[0] && response.candidates[0].content && response.candidates[0].content.parts && response.candidates[0].content.parts[0] && response.candidates[0].content.parts[0].text) {
       return {
         text: response.text,
         provider: "gemini",

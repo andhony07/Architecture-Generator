@@ -8,8 +8,6 @@ console.log({
     process.env.GOOGLE_APPLICATION_CREDENTIALS,
 });
 
-console.log("Gemini Key:", process.env.GEMINI_API_KEY);
-
 import app from "./app.js";
 import connectDB from "./config/db.js";
 
